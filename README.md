@@ -19,9 +19,9 @@ To run the testing python program "test.py", you need
 
     pip install requests
 
-To modify ui, editing the *view.html* in the path 'web_server/views'
+To modify ui, editing the **view.html** in the path 'web_server/views'
 
-Please refer https://docs.webix.com/desktop__components.html for the detail of webix library.
+Please refer https://docs.webix.com/desktop__components.html for the detail of the webix library.
 
 ## default demo charts
 The default sample view consisted of four dynamic spline charts.
