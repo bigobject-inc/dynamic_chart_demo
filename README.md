@@ -35,7 +35,7 @@ An example json:
 You can use curl to send the data.
 ex.
 
-    curl -X POST -H "Contentype:application/json" -d '{"channel":"/data","chart1_time":"2017-04-18<br>15:19:21","chart1_d1":99,"chart1_d2":14,"chart2_time":"2017-04-18<br>15:19:21","chart2_d1":58,"chart2_d2":66,"chart3_time":"2017-04-18<br>15:19:21","chart3_d1":63,"chart3_d2":66,"chart4_time":"2017-04-18<br>15:19:21","chart4_d1":19,"chart4_d2":22}' localhost:8000/pub
+    curl -X POST -H "Content-Type:application/json" -d '{"channel":"/data","chart1_time":"2017-04-18<br>15:19:21","chart1_d1":99,"chart1_d2":14,"chart2_time":"2017-04-18<br>15:19:21","chart2_d1":58,"chart2_d2":66,"chart3_time":"2017-04-18<br>15:19:21","chart3_d1":63,"chart3_d2":66,"chart4_time":"2017-04-18<br>15:19:21","chart4_d1":19,"chart4_d2":22}' localhost:8000/pub
     
 or use the python testing program "test.py" to send random data
 
