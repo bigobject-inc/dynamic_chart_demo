@@ -23,6 +23,7 @@ To modify ui, editing the **view.html** in the path 'web_server/views'
 
 Please refer https://docs.webix.com/desktop__components.html for the detail of the webix library.
 
+
 ## default demo charts
 The default sample view consisted of four dynamic spline charts.
 
@@ -40,3 +41,14 @@ ex.
 or use the python testing program "test.py" to send random data
 
     python test.py
+
+**note:**
+
+**If you want to show the charts in a remote browser, please ensure the websocket (faye) server ip is assigned to an client-accessible ip rather than 127.0.0.1 in default **
+
+**For example, the demo page "view.html" (line 13 and 20) may be modified as : **
+
+    <script type="text/javascript" src="http://192.168.1.190:8000/faye/client.js"></script>
+    
+    webix.proxy.faye.client = new Faye.Client('http://192.168.1.190:8000/faye');
+
