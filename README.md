@@ -44,7 +44,7 @@ or use the python testing program "test.py" to send random data
 
 ### note: ###
 
-### If you want to show the charts in a remote browser, please ensure the websocket (faye) server ip is assigned to an client-accessible ip rather than 127.0.0.1 in default ###
+### If you want to show the charts in a remote browser, please ensure the websocket (faye) server is assigned to a client-accessible ip rather than 127.0.0.1 in default ###
 
 ### For example, the demo page "view.html" (line 13 and 20) may be modified as : ###
 
