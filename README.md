@@ -24,7 +24,7 @@ To modify ui, editing the view.html in the path 'web_server/views'
 ## default demo charts
 The default sample view consisted of four dynamic spline charts.
 
-Please use http post to send a json data to the websocket server (127.0.0.1:8000/pub)
+Please use http post to send a json data to the websocket server 127.0.0.1:8000/pub , channel "/data"
 
 An example json:
 
