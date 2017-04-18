@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+	<!-- load webix from webix cdn, internet connection required
+	    <link rel="stylesheet" href="http://cdn.webix.com/edge/webix.css" type="text/css"> 
+	    <script src="http://cdn.webix.com/edge/webix.js" type="text/javascript"></script>  
+	-->
+	
+	<!-- load from local file -->
+	    <link rel="stylesheet" href="./webix/codebase/webix.css" type="text/css"> 
+	    <script src="./webix/codebase/webix.js" type="text/javascript"></script>  
+	<!-- load faye client from the local websocket server -->
+	    <script type="text/javascript" src="http://127.0.0.1:8000/faye/client.js"></script>
+    </head>
+
+  <body>
+
+	<div id="chartDiv" style="width:95%;height:250px;margin:20px"></div>
+	<div id="tableA" style="width:95%;height:500px;margin:20px"></div>
+	<script>
+	// init faye server
+	webix.proxy.faye.client = new Faye.Client('http://127.0.0.1:8000/faye');
+	webix.proxy.faye.clientId = webix.uid();
+
+	//main ui
+	webix.ui(
+	{
+	container:"chartDiv",
+	cols:[
+		{
+		rows:[
+		//title row
+		{view: "template",template:"<div style='width:300px;text-align:left'>demo </div>",height:30},
+		//chart
+		{
+			id: "chart1",
+			view:"chart",
+			type:"spline",
+			cellWidth: 50,
+			xAxis:{template:"<small>#timestamp#</small>"},
+			yAxis:{
+        	        start:0,
+        	        end:100,
+        	        step:10,
+	        },
+		dynamic: true,
+		animateDuration: 10 ,
+		url:  "faye->/data", 
+		save: "faye->/data",
+		legend:{
+	                values:[{text:"data1",color:"#1293f8"}],
+	                align:"right",
+	                valign:"middle",
+	                layout:"y",
+	                width: 150,
+	                margin: 8
+		},
+	 	series:[
+		{
+			value:"#data1#",
+                	item:{borderColor: "#1293f8",color: "#ffffff"},
+	                line:{color:"#1293f8",width:2},
+                }
+            	       ],
+		datatype:"json",
+	        }
+		
+		]// end of 1st column's rows
+		}
+		,
+		//2rd column
+		{
+		rows:
+		[
+			// 2rd column's row 1 and 2
+			{view: "template",template:"<div style='width:300px;text-align:left'> row 1 {{{jsdata}}} </div>"},
+			{view: "template",template:"<div style='width:300px;text-align:left'> row 2 {{{jsdata}}} </div>"},
+		]
+		}
+            ]//end of cols
+        }
+	); //webix.ui
+
+webix.ui({
+		id:"msg_table",
+		container:"tableA",
+		view:"datatable",
+		columns:[
+			{ id:"data1",	header:"data1",adjust:"all"},
+			],
+		autoheight:true,
+		autowidth:true,		
+		url:  "faye->/data", 
+	});			
+
+	//only keep last 5 rows in the table
+	$$("msg_table").attachEvent("onAfterAdd", function(id){
+		if($$("msg_table").count() > 5)
+		{
+			$$("msg_table").remove($$("msg_table").getFirstId());	
+			$$("msg_table").refresh();
+		}
+	})
+
+    
+ 	</script>
+
+  </body>
+</html>
