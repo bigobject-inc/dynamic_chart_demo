@@ -18,3 +18,5 @@ stop servers
 To run the testing python program, you need 
 
     pip install requests
+
+To modify ui, editing the view.html in the path 'web_server/views'
