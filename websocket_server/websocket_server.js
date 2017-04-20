@@ -15,13 +15,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.text());
 app.use(express.static(__dirname + '/public'));
 
+// "/pub" to receive data
 app.post('/pub', function(req, res) {
 	var ts = Date.now();
 	var tmp_v = req.body;
 	tmp_v.id=ts;
+	//make a json document for the faye message server
 	var test_json= {"id":ts,"data":tmp_v,"operation":"insert","Hr":true,"clientId":9999};
+
+	// publish the message to the assigned channel
 	bayeux.getClient().publish(tmp_v.channel, test_json );
-//	res.send(200);
+
 	res.sendStatus(200);
 });
 

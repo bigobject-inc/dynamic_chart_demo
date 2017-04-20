@@ -18,8 +18,9 @@ app.set('view engine', 'html');
 app.listen(8888);
 
 app.get('/',function(req,res){
-//	res.sendFile(path.join(__dirname+'/template.html'));
 //	res.sendFile(path.join(__dirname+'/view.html'));
+
+	//use render to pass a json data to the web page
 	res.render("view",{jsdata:'static data from server'});
 });
 

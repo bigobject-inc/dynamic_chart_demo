@@ -9,7 +9,10 @@
 	<!-- load from local file -->
 	    <link rel="stylesheet" href="./webix/codebase/webix.css" type="text/css"> 
 	    <script src="./webix/codebase/webix.js" type="text/javascript"></script>  
-	<!-- load faye client from the local websocket server -->
+	<!-- 
+		load faye client from the local websocket server 
+		Note: when the websocket faye server does not start in local machine, you need to change the src url in below.
+         -->
 	    <script type="text/javascript" src="http://127.0.0.1:8000/faye/client.js"></script>
     </head>
 
@@ -17,6 +20,7 @@
 	<div id="chartDiv" style="width:90%;height:600px;margin:20px;align=center;"></div>
 	<script>
 	// init faye server
+	// Note: when the websocket faye server does not start in local machine, you need to change the url in below.
 	webix.proxy.faye.client = new Faye.Client('http://127.0.0.1:8000/faye');
 	webix.proxy.faye.clientId = webix.uid();
 
